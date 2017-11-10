@@ -18,13 +18,20 @@ typealias JSON = [String:Any]
 
 struct WSParams {
     let channel: String
-    var clientId: String
+    var clientId: String?
+    var messages: [String]
+    var clients: [String]
+}
+
+struct ServerCommands {
+    static let send = "send"
+    static let register = "register"
 }
 
 class ChatService {
     
     let socket = WebSocket(url: URL(string: "ws://34.198.94.121:8181/api/v1/chat")!, protocols: ["chat"])
-    var wsParams = WSParams(channel: "trial1", clientId: "")
+    var wsParams = WSParams(channel: "trial1", clientId: nil, messages: [], clients: [])
     var delegate: ChatServiceDelegate?
     
     deinit {
@@ -40,12 +47,16 @@ extension ChatService {
         socket.connect()
     }
     
-    func sendMessage(_ message: String) {
-        let valueToSend = ["cmd": "send", "msg": "iOS: "+message, "clientid": wsParams.clientId, "channelid": wsParams.channel];
-        if let jsonString = String.fromJson(valueToSend) {
-            print("SENDING: " + jsonString)
-            socket.write(string: jsonString)
+    func sendRequest(_ request: ServerRequest) {
+        if let jsonRequest = request.jsonString {
+            print("SENDING: " + jsonRequest)
+            socket.write(string: jsonRequest)
         }
+    }
+    
+    func sendMessage(_ message: String) {
+        let request = ServerRequest(channelId: wsParams.channel, clientId: wsParams.clientId, command: ServerCommands.send, message: "iOS: "+message)
+        sendRequest(request)
     }
     
     func messageReceived(_ message: String) {
@@ -54,80 +65,64 @@ extension ChatService {
     }
 
     func register(_ response: String) {
-        guard let resp = response.toJson() else {
+        guard let resp = ServerResponse.from(json: response, using: .utf16) else {
             return
         }
         
-        if let result = resp["result"] as? String {
-            delegate?.setStatus("Connection: " + result)
-        }
-        
-        if let params = resp["params"] as? JSON,
-            let clientId = params["client_id"] as? String {
-            wsParams.clientId = clientId
-        }
+        delegate?.setStatus("Connection: " + resp.result)
+        wsParams.clientId = resp.params.clientId
+        wsParams.messages = resp.params.messages
+        wsParams.clients = resp.params.clientList
     }
-    
-    /*
-     ws_params.messages = resp.params.messages;
-     if(resp.params.client_list != undefined){
-     ws_params.client_list = resp.params.client_list
-     listClients(ws_params.client_list)
-     } else {
-     ws_params.client_list = new Array();
-     }
-     */
 }
 
 // MARK: - WebSocketDelegate
 extension ChatService : WebSocketDelegate {
     func websocketDidConnect(socket: WebSocketClient) {
+        print("CONNECTED")
         delegate?.setStatus("CONNECTED")
-        let valueToSend = ["cmd": "register", "msg": "joining channel "+wsParams.channel, "channelid":wsParams.channel];
-        if let jsonString = String.fromJson(valueToSend) {
-            socket.write(string: jsonString)
-        }
+        let request = ServerRequest(channelId: wsParams.channel, clientId: nil, command: ServerCommands.register, message: "joining channel "+wsParams.channel)
+        sendRequest(request)
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        print("DISCONNECTED")
         delegate?.setStatus("DISCONNECTED")
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("MESSAGE")
-        guard let jsonDict = text.toJson(),
-            let msg = jsonDict["msg"] as? String,
-            let request = jsonDict["request"] as? String else {
-                return
+        guard let serverMessage = ServerMessage.from(json: text, using: .utf16) else {
+            return
         }
         
-        switch(request) {
+        let message = serverMessage.message
+        
+        switch(serverMessage.request) {
         case "send":
-            print("send message: "+msg)
-            messageReceived(msg)
+            print("send message: "+message)
+            messageReceived(message)
             break;
         case "dispatch":
-            print("dispatch message: "+msg)
+            print("dispatch message: "+message)
             break;
         case "client_list":
-            print("client_list message: "+msg)
+            print("client_list message: "+message)
             break;
         case "client_add":
-            print("client_add message: "+msg)
+            print("client_add message: "+message)
             break;
         case "client_remove":
-            print("client_remove message: "+msg)
+            print("client_remove message: "+message)
             break;
         case "register":
-            print("register message: "+msg)
-            register(msg)
+            print("register message: "+message)
+            register(message)
             break;
         default:
-            print("default message: "+msg)
+            print("default message: "+message)
             break;
         }
-        
-        //messageReceived(messageText, senderName: messageAuthor)
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
@@ -135,26 +130,3 @@ extension ChatService : WebSocketDelegate {
     }
     
 }
-
-extension String {
-    
-    func toJson() -> JSON? {
-        if let data = self.data(using: .utf16),
-            let jsonData = try? JSONSerialization.jsonObject(with: data),
-            let jsonDict = jsonData as? JSON {
-            return jsonDict
-        }
-        return nil
-    }
-    
-    static func fromJson(_ json: JSON) -> String? {
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: json)
-            return String(data: jsonData, encoding: .utf8)
-        } catch {
-            print(error.localizedDescription)
-        }
-        return nil
-    }
-}
-

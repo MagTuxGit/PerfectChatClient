@@ -29,11 +29,6 @@ class ChatViewController: UIViewController {
         chatService.connect()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func sendButtonTouched(_ sender: UIButton) {
         guard let message = messageView.text else {
             return

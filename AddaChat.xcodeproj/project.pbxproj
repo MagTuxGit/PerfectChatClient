@@ -14,6 +14,9 @@
 		879406971FB5B52F000859F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 879406961FB5B52F000859F6 /* Assets.xcassets */; };
 		8794069A1FB5B52F000859F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879406981FB5B52F000859F6 /* LaunchScreen.storyboard */; };
 		87A6D1091FB5EA8500F72742 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A6D1081FB5EA8500F72742 /* ChatService.swift */; };
+		87A6D10B1FB5F4ED00F72742 /* ServerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A6D10A1FB5F4ED00F72742 /* ServerRequest.swift */; };
+		87A6D10D1FB5F80F00F72742 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A6D10C1FB5F80F00F72742 /* ServerResponse.swift */; };
+		87A6D10F1FB5FA0900F72742 /* ServerMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A6D10E1FB5FA0900F72742 /* ServerMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		879406991FB5B52F000859F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8794069B1FB5B52F000859F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87A6D1081FB5EA8500F72742 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		87A6D10A1FB5F4ED00F72742 /* ServerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRequest.swift; sourceTree = "<group>"; };
+		87A6D10C1FB5F80F00F72742 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
+		87A6D10E1FB5FA0900F72742 /* ServerMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerMessage.swift; sourceTree = "<group>"; };
 		C084664AA0C826EF0542470C /* Pods_AddaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AddaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				87A6D1081FB5EA8500F72742 /* ChatService.swift */,
+				87A6D10A1FB5F4ED00F72742 /* ServerRequest.swift */,
+				87A6D10C1FB5F80F00F72742 /* ServerResponse.swift */,
+				87A6D10E1FB5FA0900F72742 /* ServerMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,7 +255,10 @@
 			files = (
 				879406921FB5B52F000859F6 /* ChatViewController.swift in Sources */,
 				879406901FB5B52F000859F6 /* AppDelegate.swift in Sources */,
+				87A6D10F1FB5FA0900F72742 /* ServerMessage.swift in Sources */,
+				87A6D10B1FB5F4ED00F72742 /* ServerRequest.swift in Sources */,
 				87A6D1091FB5EA8500F72742 /* ChatService.swift in Sources */,
+				87A6D10D1FB5F80F00F72742 /* ServerResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
