@@ -30,12 +30,6 @@ extension ServerResponse {
         return try? decoder.decode(ServerResponse.self, from: data)
     }
     
-    static func from(url urlString: String) -> ServerResponse? {
-        guard let url = URL(string: urlString) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        return from(data: data)
-    }
-    
     var jsonData: Data? {
         let encoder = JSONEncoder()
         return try? encoder.encode(self)

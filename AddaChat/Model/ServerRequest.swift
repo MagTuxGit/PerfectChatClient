@@ -26,12 +26,6 @@ extension ServerRequest {
         return try? decoder.decode(ServerRequest.self, from: data)
     }
     
-    static func from(url urlString: String) -> ServerRequest? {
-        guard let url = URL(string: urlString) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        return from(data: data)
-    }
-    
     var jsonData: Data? {
         let encoder = JSONEncoder()
         return try? encoder.encode(self)
@@ -51,17 +45,3 @@ extension ServerRequest {
         case message = "msg"
     }
 }
-
-/*
-extension ServerRequest {
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(channelId, forKey: .channelId)
-        try container.encode(command, forKey: .command)
-        try container.encode(message, forKey: .message)
-        if clientId != nil {
-            try container.encode(clientId, forKey: .clientId)
-        }
-    }
-}
- */
