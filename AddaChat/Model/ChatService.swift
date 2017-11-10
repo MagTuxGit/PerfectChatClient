@@ -104,6 +104,7 @@ extension ChatService : WebSocketDelegate {
             messageReceived(message)
             break;
         case "dispatch":
+            delegate?.setStatus("")
             print("dispatch message: "+message)
             break;
         case "client_list":
