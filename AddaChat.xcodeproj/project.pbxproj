@@ -13,6 +13,7 @@
 		879406951FB5B52F000859F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879406931FB5B52F000859F6 /* Main.storyboard */; };
 		879406971FB5B52F000859F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 879406961FB5B52F000859F6 /* Assets.xcassets */; };
 		8794069A1FB5B52F000859F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879406981FB5B52F000859F6 /* LaunchScreen.storyboard */; };
+		87A6D1091FB5EA8500F72742 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A6D1081FB5EA8500F72742 /* ChatService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		879406961FB5B52F000859F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		879406991FB5B52F000859F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8794069B1FB5B52F000859F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87A6D1081FB5EA8500F72742 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		C084664AA0C826EF0542470C /* Pods_AddaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AddaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 		8794068E1FB5B52F000859F6 /* AddaChat */ = {
 			isa = PBXGroup;
 			children = (
+				87A6D1071FB5EA6F00F72742 /* Model */,
 				8794069B1FB5B52F000859F6 /* Info.plist */,
 				8794068F1FB5B52F000859F6 /* AppDelegate.swift */,
 				879406A11FB5B550000859F6 /* View */,
@@ -94,6 +97,14 @@
 				879406981FB5B52F000859F6 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87A6D1071FB5EA6F00F72742 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87A6D1081FB5EA8500F72742 /* ChatService.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C39C03E2996FEC880F538897 /* Frameworks */ = {
@@ -235,6 +246,7 @@
 			files = (
 				879406921FB5B52F000859F6 /* ChatViewController.swift in Sources */,
 				879406901FB5B52F000859F6 /* AppDelegate.swift in Sources */,
+				87A6D1091FB5EA8500F72742 /* ChatService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 59ECVJXP69;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AddaChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = onlinico.AddaChat;
@@ -389,7 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 59ECVJXP69;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AddaChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = onlinico.AddaChat;
