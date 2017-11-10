@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5kx-hm-G7U">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat View Controller-->
+        <scene sceneID="9Pd-Su-KYT">
+            <objects>
+                <viewController id="5kx-hm-G7U" customClass="ChatViewController" customModule="AddaChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="If4-bW-U49">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yf0-kC-jeF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="637"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvI-AZ-1v9">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDH-oI-l5P">
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wmh-Ql-qmP">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKl-rv-QZN">
+                                        <rect key="frame" x="335" y="0.0" width="40" height="30"/>
+                                        <state key="normal" title="SEND"/>
+                                        <connections>
+                                            <action selector="sendButtonTouched:" destination="5kx-hm-G7U" eventType="touchUpInside" id="9up-5E-AOT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="VKl-rv-QZN" secondAttribute="trailing" id="2UU-oo-Nzk"/>
+                                    <constraint firstItem="VKl-rv-QZN" firstAttribute="top" secondItem="mDH-oI-l5P" secondAttribute="top" id="B7i-iY-35c"/>
+                                    <constraint firstItem="VKl-rv-QZN" firstAttribute="leading" secondItem="wmh-Ql-qmP" secondAttribute="trailing" id="HlX-oY-1hu"/>
+                                    <constraint firstAttribute="bottom" secondItem="VKl-rv-QZN" secondAttribute="bottom" id="WTC-TP-Eia"/>
+                                    <constraint firstItem="wmh-Ql-qmP" firstAttribute="leading" secondItem="mDH-oI-l5P" secondAttribute="leading" id="bpQ-0U-tWf"/>
+                                    <constraint firstItem="wmh-Ql-qmP" firstAttribute="top" secondItem="mDH-oI-l5P" secondAttribute="top" id="doa-b8-LRr"/>
+                                    <constraint firstAttribute="bottom" secondItem="wmh-Ql-qmP" secondAttribute="bottom" id="miT-MF-VVq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mDH-oI-l5P" firstAttribute="top" secondItem="Yf0-kC-jeF" secondAttribute="bottom" id="5Sb-ug-fM1"/>
+                            <constraint firstItem="Yf0-kC-jeF" firstAttribute="trailing" secondItem="lfM-QF-xsN" secondAttribute="trailing" id="7SP-Dy-EnF"/>
+                            <constraint firstItem="WvI-AZ-1v9" firstAttribute="leading" secondItem="lfM-QF-xsN" secondAttribute="leading" id="8YW-S4-2eB"/>
+                            <constraint firstItem="lfM-QF-xsN" firstAttribute="trailing" secondItem="WvI-AZ-1v9" secondAttribute="trailing" id="B5z-JG-jev"/>
+                            <constraint firstItem="Yf0-kC-jeF" firstAttribute="leading" secondItem="lfM-QF-xsN" secondAttribute="leading" id="WRu-qW-Iga"/>
+                            <constraint firstItem="lfM-QF-xsN" firstAttribute="bottom" secondItem="WvI-AZ-1v9" secondAttribute="bottom" id="XJU-E1-g5E"/>
+                            <constraint firstItem="mDH-oI-l5P" firstAttribute="trailing" secondItem="lfM-QF-xsN" secondAttribute="trailing" id="cUb-yv-vyN"/>
+                            <constraint firstItem="WvI-AZ-1v9" firstAttribute="top" secondItem="mDH-oI-l5P" secondAttribute="bottom" id="hiY-n0-iJ9"/>
+                            <constraint firstItem="Yf0-kC-jeF" firstAttribute="top" secondItem="If4-bW-U49" secondAttribute="top" id="kIO-IA-Afi"/>
+                            <constraint firstItem="mDH-oI-l5P" firstAttribute="leading" secondItem="lfM-QF-xsN" secondAttribute="leading" id="pxA-ir-fOj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lfM-QF-xsN"/>
+                    </view>
+                    <connections>
+                        <outlet property="chatView" destination="Yf0-kC-jeF" id="2iv-Y8-IW2"/>
+                        <outlet property="messageView" destination="wmh-Ql-qmP" id="gu7-Zx-M25"/>
+                        <outlet property="sendButton" destination="VKl-rv-QZN" id="vnT-TC-UG4"/>
+                        <outlet property="statusLabel" destination="WvI-AZ-1v9" id="GyC-FS-L2x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nLD-lT-1O8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-263.19999999999999" y="-58.020989505247378"/>
+        </scene>
+    </scenes>
+</document>
